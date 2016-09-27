@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="materialize/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="materialize/css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>  
+  
+  <title>Planejamento Pessoal</title>  
+  
+  <script language="javascript">
+    function calcularJuros()
+    {
+      var valorEmprestimo, numeroParcelas, taxaJuros, valorParcela, juros, montante, valorParcelaCalculada;
+	  
+      valorEmprestimo = vlrTotal.value;
+      numeroParcelas = numParcelas.value;
+	  taxaJuros = txJuros.value;
+	  valorParcela = vlrParcela.value;
+	  
+	  valorEmprestimo = parseFloat(valorEmprestimo);
+	  numeroParcelas = parseFloat(numeroParcelas);
+	  taxaJuros = parseFloat(taxaJuros);
+	  valorParcela = parseFloat(valorParcela);
+
+	  if (mensal.checked == false && anual.checked == false)
+	  {
+		alert("informe o tipo de juros");
+		return 0;
+	  }
+	  
+      if (anual.checked == true)
+      {
+		taxaJuros = taxaJuros / 12;
+      }	  
+	  
+	  juros = valorEmprestimo * (taxaJuros/100) * numeroParcelas;
+	  montante = valorEmprestimo + juros;
+	  valorParcelaCalculada = montante / numeroParcelas;	  
+	  
+	  if (valorParcelaCalculada == valorParcela)
+	  {
+		alert("O valor informado pelo banco está correto");
+	  }
+	  else
+	  {
+		alert("O valor da parcela está incorreto, o valor correto para a pacela e R$ " + valorParcelaCalculada);
+	  }	  
+    }
+  </script>  
+</head>
+
+<body>
+  <nav class="light-blue lighten-1" role="navigation">
+    <div class="nav-wrapper container"><a id="logo-container" href="index.html" class="brand-logo">Planejamento Pessoal</a></div>
+  </nav>
+  
+  <div class="section no-pad-bot" id="index-banner">
+    <div class="container">
+      <br><br>      
+      <div class="row center">
+        <h1 class="header col s12 light">Calculadora de Juros</h1>
+      </div>                          
+      <br><br>
+      <div class="row center">
+        <div class="row">
+        <div class="row">
+            <div class="row">
+              <div class="input-field col s6">
+                <input id="vlrTotal" type="text" class="validate">
+                <label for="vlrTotal">Valor total do emprestimo</label>
+              </div>
+              <div class="input-field col s6">
+                <input id="numParcelas" type="text" class="validate">
+                <label for="numParcelas">Número de Parcelas</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s6">               
+                <input id="txJuros" type="text" class="validate">
+                <label for="txJuros">Taxa de Juros (%)</label>
+              </div>
+              <div class="input-field col s6">               
+                <input id="vlrParcela" type="text" class="validate">
+                <label for="vlrParcela">Valor da Parcela</label>
+              </div>			  
+            </div>			
+			<div class="row">			
+			  <h6 class="header col s12 light">Tipo de Juros</h6>
+			</div>
+			<div class="row">
+			  <input name="grpTipoJuros" type="radio" id="mensal" />
+			  <label for="mensal">Mensal</label>
+			  <input name="grpTipoJuros" type="radio" id="anual" />
+			  <label for="anual">Anual</label>
+			</div>					
+        </div>      			
+        </div>
+        <a id="download-button" onclick="javascript:calcularJuros();" class="btn-large waves-effect waves-light orange">Calcular</a>              
+      </div>
+      <br><br>
+    </div>
+  </div>  
+  
+  <footer class="page-footer">      
+    <div class="footer-copyright">
+      <div class="container">
+        ALL RIGHTS RESERVED. COPYRIGHT © 2016. Designed by <a class="grey-text text-lighten-4" href="http://buscatextual.cnpq.br/buscatextual/visualizacv.do?id=K4310621E7">Marcos Vinicius</a></p>
+      </div>
+    </div>    
+  </footer>
+
+  <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script type="text/javascript" src="materialize/js/materialize.min.js"></script>
+</body>
+</html>
